@@ -1,4 +1,9 @@
-body {
+.signup-body {
+    background-color: #344a72;
+    font-family: 'Roboto', sans-serif;
+}
+
+.login-body {
     background-color: #344a72;
     font-family: 'Roboto', sans-serif;
 }
