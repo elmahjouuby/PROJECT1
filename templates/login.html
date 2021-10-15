@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+{% extends "bootstrap/base.html"%}
+
+{%block head%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./static/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
 
     <title>Login</title>
-</head>
-
+{%endblock%}
+{%block body%}
 <body class="login-body">
     <div class="login-box">
         <h1>Login</h1>
@@ -25,6 +25,4 @@
     <p class="paragraph">Not have an account ?
         <a href="sign_up.html"> Sign Up Here</a>
     </p>
-</body>
-
-</html>
+{%endblock%}
