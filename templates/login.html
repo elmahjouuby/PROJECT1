@@ -1,6 +1,6 @@
 
 {% extends "bootstrap/base.html"%}
-
+{% import "bootstrap/wtf.html" as wtf%}
 {%block head%}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,12 +14,12 @@
 <body class="login-body">
     <div class="login-box">
         <h1>Login</h1>
-        <form>
-            <label>First Name</label>
-            <input type="text" placeholder="Enter your First Name">
-            <label>Password</label>
-            <input type="password" placeholder="Enter your password">
-            <input type="button" value="Submit">
+        <form method="POST" action="/login">
+            {{form.hidden_tag()}}
+            {{wtf.form_field(form.firstname)}}
+            {{wtf.form_field(form.password)}}
+            
+            <button type="submit">LOGIN</button>
         </form>
     </div>
     <p class="paragraph">Not have an account ?
