@@ -16,7 +16,7 @@
         <h1>Login</h1>
         <form method="POST" action="/login">
             {{form.hidden_tag()}}
-            {{wtf.form_field(form.firstname)}}
+            {{wtf.form_field(form.email)}}
             {{wtf.form_field(form.password)}}
             
             <button type="submit">LOGIN</button>
