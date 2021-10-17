@@ -51,7 +51,7 @@ class RegisterFrom(FlaskForm):
 @app.route('/home')
 @login_required
 def home():
-    users = User.query.order_by(User.id)
+    users = User.query
     return render_template('home.html', name=current_user.firstname, users=users)
 
 @app.route('/login',methods=['GET','POST'])
