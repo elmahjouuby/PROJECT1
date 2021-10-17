@@ -7,14 +7,20 @@ from wtforms.fields.core import IntegerField
 from wtforms.validators import InputRequired, Email, Length
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin, login_manager, login_user, login_required, logout_user, current_user
+
 
 app = Flask(__name__)
 Bootstrap(app)
 app.config['SECRET_KEY'] = 'marouaneelmahjouby'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///c:/Users/Marouane/Desktop/PROJECT1/database.db'
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
 
-class User(db.Model):
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(128))
     lastname = db.Column(db.String(128))
@@ -22,6 +28,11 @@ class User(db.Model):
     address = db.Column(db.String(50))
     phone = db.Column(db.Numeric(50))
     password = db.Column(db.String(100))
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 class LoginForm(FlaskForm):
@@ -38,8 +49,9 @@ class RegisterFrom(FlaskForm):
 
 
 @app.route('/home')
+@login_required
 def home():
-    return render_template('home.html')
+    return render_template('home.html', name=current_user.firstname)
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -48,6 +60,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             if check_password_hash(user.password,form.password.data):
+                login_user(user)
                 return redirect(url_for('home'))
         return "<h1>Invalid Username or Password</h1>"
     return render_template('login.html',form=form)
@@ -69,6 +82,10 @@ def signup():
         
     return render_template('sign_up.html',form=form)
 
-
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
 if __name__ == '__main__':
     app.run(debug=True)
