@@ -20,6 +20,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
+#Creating a table on the database
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     firstname = db.Column(db.String(128))
@@ -30,15 +31,17 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(100))
 
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-
+#The login form 
 class LoginForm(FlaskForm):
     email = StringField('EMAIL', validators=[InputRequired()])
     password = PasswordField('PASSWORD', validators=[InputRequired()])
 
+#The register form
 class RegisterFrom(FlaskForm):
     email = StringField('EMAIL', validators=[InputRequired(), Email(message="Invalid email"), Length(max=40)])
     firstname = StringField('FIRST NAME', validators=[InputRequired(), Length(min=4,max=30)])
@@ -51,6 +54,7 @@ class RegisterFrom(FlaskForm):
 @app.route('/home')
 @login_required
 def home():
+    #Getting all users from DB
     users = User.query
     return render_template('home.html', name=current_user.firstname, users=users)
 
