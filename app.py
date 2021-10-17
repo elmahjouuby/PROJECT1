@@ -43,7 +43,7 @@ class RegisterFrom(FlaskForm):
     email = StringField('EMAIL', validators=[InputRequired(), Email(message="Invalid email"), Length(max=40)])
     firstname = StringField('FIRST NAME', validators=[InputRequired(), Length(min=4,max=30)])
     lastname = StringField('LAST NAME', validators=[InputRequired(), Length(min=4,max=30)])
-    address = StringField('ADRESS', validators=[InputRequired(),Length(max=100)])
+    address = StringField('ADDRESS', validators=[InputRequired(),Length(max=100)])
     phone = IntegerField('PHONE NUMBER',validators=[InputRequired()])
     password = PasswordField('PASSWORD', validators=[InputRequired(), Length(min=10,max=30)])
 

@@ -10,7 +10,7 @@
 
 .signup-box {
     width: 360px;
-    height: 620px;
+    height: 680px;
     margin: auto;
     background-color: white;
     border-radius: 3px;
@@ -53,19 +53,10 @@ form input {
     outline: none;
 }
 
-input[type="button"] {
-    width: 320px;
-    height: 35px;
-    margin-top: 20px;
-    border: none;
-    background-color: #49c1a2;
-    color: white;
-    font-size: 18px;
-}
 
 p {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
     font-size: 15px
 }
 
@@ -78,4 +69,14 @@ p {
 
 .paragraph a {
     color: #49c1a2;
+}
+
+button{    
+        width: 320px;
+        height: 35px;
+        margin-top: 20px;
+        border: none;
+        background-color: #49c1a2;
+        color: white;
+        font-size: 18px;
 }
