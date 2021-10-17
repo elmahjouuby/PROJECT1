@@ -14,9 +14,9 @@
 {%endblock%}
 {%block content %}
     <div>
-        <h1>HOME PAGE</h1>
+        <h1>WELCOME {{name}}</h1>
         <p>
-            <a href="login.html" class="btn btn-info btn-lg ">
+            <a href="{{url_for('logout')}}" class="btn btn-info btn-lg ">
                 <span class="glyphicon glyphicon-log-out "></span> Log out
             </a>
         </p>
