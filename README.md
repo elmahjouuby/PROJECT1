@@ -7,7 +7,7 @@ This is a WEB APPLICATION that let you signup, login and have access to a home p
 This project was made using Python as a language, Flask as a microframework and SQLite3 as a database.
 
 # Requirements 
-- Python 3
+- Python 3.8.8 (Preferable)
 - SQLite 3 
 - Flask
 
